@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+
+{% block Titulo %}
+Sobre o Senac Shopping
+{% endblock Titulo %}
+
+{% block Conteudo %}
+        <!-- Header-->
+        <header class="bg-light py-1">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-dark">
+                    <h1 class="display-4 fw-bolder">Sobre o Senac Shopping</h1>
+                </div>
+            </div>
+        </header>
+        <!-- Section-->
+        <section class="py-5">
+            <div class="container">
+                {% lorem 5 p random %}
+            </div>
+        </section>
+
+{% endblock Conteudo %}
