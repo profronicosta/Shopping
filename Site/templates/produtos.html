@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block Titulo %}Título da Categoria{% endblock Titulo %}
+{% block Titulo %}{{ nome_categoria }}{% endblock Titulo %}
 
 {% block Conteudo %}
         <!-- Header-->
         <header class="bg-light py-1">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-dark">
-                    <h1 class="display-4 fw-bolder">Título da Categoria</h1>
+                    <h1 class="display-4 fw-bolder">{{ nome_categoria }}</h1>
                 </div>
             </div>
         </header>
@@ -17,33 +17,13 @@
             <div class="container px-4 px-lg-5 mt-5">
                 
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    
-                    
+
                     <!-- Inicio Produtos -->
-                    {% include 'card_produto.html' %}
-                    <!-------->
-                    {% include 'card_produto.html' %}
-                    <!-------->
-                    {% include 'card_produto.html' %}
-                    <!-------->
-                    {% include 'card_produto.html' %}
-                    <!-------->
-                    {% include 'card_produto.html' %}
-                    <!-------->
-                    {% include 'card_produto.html' %}
-                    <!-------->
-                    {% include 'card_produto.html' %}
-                    <!-------->
-                    {% include 'card_produto.html' %}
-                    <!-------->
-                    {% include 'card_produto.html' %}
-                    <!-------->
-                    {% include 'card_produto.html' %}
-                    <!-------->
-                    {% include 'card_produto.html' %}
-                    <!-------->
-                    {% include 'card_produto.html' %}
+                    {% for prod in produtos %}
+                        {% include 'card_produto.html' %}
+                    {% endfor %}
                     <!-- termino produtos-->
+                    
                 </div>
             </div>
         </section>

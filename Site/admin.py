@@ -8,7 +8,7 @@ class DepartamentoAdmin(admin.ModelAdmin):
     list_display_links = ['id', 'nome']
 
 class ProdutoAdmin(admin.ModelAdmin):
-    list_display = ['id', 'nome', 'preco', 'avaliacao', 'departamento', 'ver_imagem']
+    list_display = ['id', 'nome', 'preco', 'avaliacao', 'destaque', 'lancamento', 'departamento', 'ver_imagem']
     list_display_links = ['id', 'nome']
     list_filter = ['departamento']
     readonly_fields = ['ver_imagem']

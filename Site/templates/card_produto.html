@@ -1,30 +1,33 @@
 {% load static %}
 <div class="col mb-5">
     <div class="card h-100">
-        <!-- Sale badge-->
-        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Lançamento</div>
+        {% if prod.lancamento == True %}
+            <!-- Sale badge-->
+            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Lançamento</div>
+        {% endif %}
         <!-- Product image-->
-        <img class="card-img-top" src="{% static 'img/camiseta2.jpg' %}" width="450" alt="..." />
+        <img class="card-img-top" src="{{ prod.imagem.url }}" width="450" alt="..." />
         <!-- Product details-->
         <div class="card-body p-4">
             <div class="text-center">
                 <!-- Product name-->
-                <h5 class="fw-bolder">Special Item</h5>
+                <h5 class="fw-bolder">{{ prod.nome }}</h5>
                 <!-- Product reviews-->
                 <div class="d-flex justify-content-center small text-warning mb-2">
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
+                
+                    {% for i in prod.get_estrelas %}
+                        <div class="bi-star-fill"></div>
+                    {% endfor %}
+                
                 </div>
+
                 <!-- Product price-->
-                R$ 120,90
+                R$ {{ prod.preco }}
             </div>
         </div>
         <!-- Product actions-->
         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="produto_detalhes.html">Ver Produto</a></div>
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'produto_detalhe' id=prod.id|default:0 %}">Ver Produto</a></div>
         </div>
     </div>
 </div>

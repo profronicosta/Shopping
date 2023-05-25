@@ -25,11 +25,12 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shopping</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="produtos.html">Todos Produtos</a></li>
+                                <li><a class="dropdown-item" href="{% url 'produto_lista' %}">Todos Produtos</a></li>
                                 <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Categoria 1</a></li>
-                                <li><a class="dropdown-item" href="#!">Categoria 2</a></li>
-                                <li><a class="dropdown-item" href="#!">Categoria 3</a></li>
+                                {% for depto in departamentos %}
+                                <li><a class="dropdown-item" href="{% url 'produto_lista_por_id' id=depto.id %}">{{ depto.nome }}</a></li>
+                                {% endfor %}
+
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'cadastro' %}">Cadastro</a></li>
