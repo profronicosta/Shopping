@@ -1,28 +1,33 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block Titulo %}Título do Produto{% endblock Titulo %}
+{% block Titulo %}{{ produto.nome }}{% endblock Titulo %}
 
 {% block Conteudo %}
         <!-- Product section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" /></div>
                     <div class="col-md-6">
-                        <div class="small mb-1">SKU: BST-498</div>
-                        <h1 class="display-5 fw-bolder">Shop item template</h1>
+                        <div class="small mb-1">SKU: {{ produto.codigo }}</div>
+                        <h1 class="display-5 fw-bolder">{{ produto.nome}}</h1>
                         <div class="fs-5 mb-5">
-                            <span class="text-decoration-line-through">$45.00</span>
-                            <span>$40.00</span>
+                            <span>R$ {{ produto.preco }}</span>
                         </div>
-                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+                        <p class="lead">{{ produto.descricao|safe|linebreaksbr }}</p>
                         <div class="d-flex">
-                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                                <i class="bi-cart-fill me-1"></i>
-                                Add to cart
-                            </button>
+                            
+                            <a href="https://wa.me/5511988881111?text=Quero 
+                                comprar o produto {{ produto.nome }}" target="_blank">
+
+                                <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                                    <i class="bi-cart-fill me-1"></i>
+                                    Comprar pelo WhatsApp
+                                </button>
+
+                            </a>
+
                         </div>
                     </div>
                 </div>
@@ -31,16 +36,12 @@
         <!-- Related items section-->
         <section class="py-5 bg-light">
             <div class="container px-4 px-lg-5 mt-5">
-                <h2 class="fw-bolder mb-4">Related products</h2>
+                <h2 class="fw-bolder mb-4">Produtos Relacionados</h2>
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     <!-- Inicio Produtos -->
-                    {% include 'card_produto.html' %}
-                    <!-------->
-                    {% include 'card_produto.html' %}
-                    <!-------->
-                    {% include 'card_produto.html' %}
-                    <!-------->
-                    {% include 'card_produto.html' %}
+                    {% for prod in produtos_relacionados %}
+                        {% include 'card_produto.html' %}
+                    {% endfor %}
                     <!-- termino produtos-->
                 </div>
             </div>
