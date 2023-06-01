@@ -1,4 +1,6 @@
 {% extends 'base.html'%}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
 
 {% block Titulo %}
 Cadastro
@@ -16,14 +18,18 @@ Cadastro
         <!-- Section-->
         <section class="py-5">
             <div class="container">
-                
+                {% if mensagem %}
+                  <div class="alert alert-success">
+                    {{ mensagem }}
+                  </div>
+                {% endif %}
+
                 <form action="{% url 'cadastro' %}" method="POST">
                     {% csrf_token %}
-                    <table class="table">
-                        {{ form_cliente.as_table }}
-                    </table>
-
-                    <input type="submit" value="Enviar">
+                    <div class="col-md-6 offset-md-3">
+                        {{ form_cliente|crispy }}
+                        <input type="submit" value="Enviar" class="btn btn-success">
+                    </div>
                 </form>
 
             </div>
