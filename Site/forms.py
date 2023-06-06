@@ -14,13 +14,7 @@ class ClienteForm(forms.ModelForm):
 class ContatoForm(forms.Form):
     nome = forms.CharField()
     email = forms.EmailField()
-    telefone = forms.CharField()
+    telefone = forms.CharField(widget=forms.TextInput
+                               (attrs={'class':'phone_with_ddd'}))
     assunto = forms.CharField()
-    mensagem = forms.CharField()
-
-    class Meta:
-        widgets = {
-            'telefone': forms.TextInput(attrs=
-                                {'class':'phone_with_ddd'}),
-            'mensagem': forms.Textarea
-        }
+    mensagem = forms.CharField(widget=forms.Textarea)

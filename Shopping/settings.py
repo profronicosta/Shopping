@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +26,9 @@ SECRET_KEY = 'django-insecure-!lv-e0$+gmdx^(1=a_^so+!ewob__=l!t3)1n2*-7wpq*#nkyn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', '127.0.0.1']
+
+CSRF_TRUSTED_ORIGINS  = ['*']
 
 
 # Application definition
@@ -68,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'Site.context_processors.listar_departamentos'
             ],
         },
     },
@@ -79,10 +83,22 @@ WSGI_APPLICATION = 'Shopping.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# MYSQL
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'railway',
+        'USER': 'root',
+        'PASSWORD': 'Q5wki4ptVcve7Cab1ADx',
+        'HOST': 'containers-us-west-33.railway.app',   
+        'PORT': '6559',
     }
 }
 
@@ -122,6 +138,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')	# static files do admin
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ] # static files do site
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -137,5 +155,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'seuemail@gmail.com'
-EMAIL_HOST_PASSWORD = 'minhasenha'
+EMAIL_HOST_USER = 'profronicosta@gmail.com'
+EMAIL_HOST_PASSWORD = 'dqekkgzuwmeetfzz'

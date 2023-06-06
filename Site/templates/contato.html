@@ -19,7 +19,7 @@ Contato
         <section class="py-5">
             <div class="container">
                 {% if mensagem %}
-                  <div class="alert alert-success">
+                  <div class="alert alert-{% if 'Erro' in mensagem %}danger{% else %}success{% endif %}">
                     {{ mensagem }}
                   </div>
                 {% endif %}
