@@ -1,7 +1,9 @@
-Django
-crispy-bootstrap5
+asgiref==3.6.0
+crispy-bootstrap5==0.7
+Django==4.2.1
 django-crispy-forms==2.0
 gunicorn==20.1.0
-mysqlclient
+mysqlclient==2.1.1
 Pillow==9.5.0
-whitenoise
+sqlparse==0.4.4
+tzdata==2023.3
